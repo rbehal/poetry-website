@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@vue/cli": "^4.4.1",
+    "bootstrap-vue": "^2.15.0",
     "rematrix": "^0.4.1",
     "vue-router": "^3.3.2"
   },
@@ -26,7 +27,7 @@
     "rollup-plugin-node-resolve": "^5.0.0",
     "rollup-plugin-terser": "^5.0.0",
     "rollup-plugin-vue": "^5.0.0",
-    "vue": "^2.6.10",
+    "vue": "^2.6.11",
     "vue-cli-plugin-coffeescript": "^0.0.3",
     "vue-material-design-icons": "^4.7.1",
     "vue-ribbon": "^1.0.1",

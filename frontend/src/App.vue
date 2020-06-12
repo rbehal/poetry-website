@@ -18,7 +18,8 @@
       @zoom-start="onZoomStart"
       @zoom-end="onZoomEnd"
     >
-      <router-view></router-view>
+    <router-view></router-view>
+
       <div class="action-bar">
         <left-icon
           class="btn left"
