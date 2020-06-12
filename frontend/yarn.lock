@@ -11885,6 +11885,11 @@ vue-ribbon@^1.0.1:
   resolved "https://registry.yarnpkg.com/vue-ribbon/-/vue-ribbon-1.0.1.tgz#777ba7c8c5ece9202def5408e980f3a77a655b2b"
   integrity sha512-2YPMujiCsZcNa4MZXGQmg9IOkZQMShUHRGnbZycRYrBLJ2PoCJGl22jf9ld+B7PrSbmKCQqdkyXCtjih5gfuYw==
 
+vue-router@^3.3.2:
+  version "3.3.2"
+  resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-3.3.2.tgz#0099de402edb2fe92f9711053ab5a2156f239cad"
+  integrity sha512-5sEbcfb7MW8mY8lbUVbF4kgcipGXsagkM/X+pb6n0MhjP+RorWIUTPAPSqgPaiPOxVCXgAItBl8Vwz8vq78faA==
+
 vue-runtime-helpers@^1.1.1:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vue-runtime-helpers/-/vue-runtime-helpers-1.1.2.tgz#446b7b820888ab0c5264d2c3a32468e72e4100f3"
