@@ -23,19 +23,19 @@ def downloadImages():
 	})
 	process.wait()
 	# Downloading images to raw_images folder
-	process.download("raw_images")
+	process.download("raw_images/")
 
 def createRawImages():
 	# Extracting zip file
 	with zipfile.ZipFile("raw_images/" + zip_file, 'r') as zip_ref:
-		zip_ref.extractall("raw_images")
+		zip_ref.extractall("raw_images/")
 
 	# Deleting zip file
 	os.remove("raw_images/" + zip_file)
 	os.remove("poems.pdf")
 
 	# Renaming images
-	for filename in os.listdir("raw_images"):
+	for filename in os.listdir("raw_images/"):
 		if filename.endswith(".png"):
 			image_path = "raw_images/"
 			if (filename[-7:-4].isdigit()):
