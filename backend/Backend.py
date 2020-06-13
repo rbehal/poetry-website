@@ -21,7 +21,7 @@ def upload_image():
 			poems = request.files["poems"]
 			print(poems)
 			print(os.getcwd())
-			poems.save(os.getcwd())
+			poems.save(os.getcwd() + "/poems.pdf")
 			return redirect(request.referrer)
 	return 'NOT OK'
 
