@@ -5,10 +5,52 @@ from flask import Flask, jsonify, request, redirect
 from flask_restful import Api, Resource, reqparse
 from flask_cors import CORS, cross_origin
 import os
+import cloudconvert
+import zipfile
 
-# creating a Flask app 
+# PDF Processing #
+
+def downloadImages():
+	# Calling api to convert images
+	pdf_name = 'poems.pdf' 
+
+	api = cloudconvert.Api('tpdYmzoswVXlDQoU0qz54F7sCs9HOBu06lkDV3BJz8oyUhGBpgbDQD3Fw0goOhKH')
+	process = api.convert({
+		"inputformat": "pdf",
+		"outputformat": "png",
+		"input": "upload",
+		"file": open(pdf_name, 'rb')
+	})
+	process.wait()
+	# Downloading images to raw_images folder
+	process.download("raw_images")
+
+def createRawImages():
+	# Extracting zip file
+	with zipfile.ZipFile("raw_images/" + zip_file, 'r') as zip_ref:
+		zip_ref.extractall("raw_images")
+
+	# Deleting zip file
+	os.remove("raw_images/" + zip_file)
+	os.remove("poems.pdf")
+
+	# Renaming images
+	for filename in os.listdir("raw_images"):
+		if filename.endswith(".png"):
+			image_path = "raw_images/"
+			if (filename[-7:-4].isdigit()):
+				os.rename(image_path + filename, image_path + filename[-7:-4] + ".png")
+			elif (filename[-6:-4].isdigit()):
+				os.rename(image_path + filename, image_path + filename[-6:-4] + ".png")
+			elif (filename[-5].isdigit()):
+				os.rename(image_path + filename, image_path + filename[-5] + ".png")    
+		else:
+			continue
+
+
+# Creating a Flask app #
+
 app = Flask(__name__) 
-
 
 @app.route("/", methods = ['GET']) 
 def home_view():
@@ -19,12 +61,12 @@ def upload_image():
 	if request.method == "POST":
 		if request.files:
 			poems = request.files["poems"]
-			print(poems)
-			print(os.getcwd())
 			poems.save(os.getcwd() + "/poems.pdf")
+			downloadImages()
+			createRawImages()
 			return redirect(request.referrer)
 	return 'NOT OK'
 
-# driver function - must be at the end
+# Driver function - must be at the end
 if __name__ == '__main__': 
 	app.run()

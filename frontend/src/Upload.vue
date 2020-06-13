@@ -2,9 +2,8 @@
     <div class="row">
         <div class="col" style="text-align: center">
             <h1>Upload Page</h1>
-            <form action="http://127.0.0.1:6001/upload" method="POST" enctype="multipart/form-data">
+            <form action="http://18.224.110.124:5000/upload" method="POST" enctype="multipart/form-data">
                 <b-form-file 
-                    v-model="file" 
                     class="py-2" 
                     accept="application/pdf"
                     name="poems"
