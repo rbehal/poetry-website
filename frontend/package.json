@@ -1,4 +1,5 @@
 {
+  "license": "MIT",
   "browser": {
     "./sfc": "src/Flipbook.vue"
   },
@@ -11,6 +12,7 @@
     "@vue/cli": "^4.4.1",
     "bootstrap-vue": "^2.15.0",
     "rematrix": "^0.4.1",
+    "sass-loader": "^8.0.2",
     "vue-router": "^3.3.2"
   },
   "devDependencies": {
