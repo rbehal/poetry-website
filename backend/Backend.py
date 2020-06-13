@@ -12,14 +12,12 @@ import zipfile
 
 def downloadImages():
 	# Calling api to convert images
-	pdf_name = 'poems.pdf' 
-
 	api = cloudconvert.Api('tpdYmzoswVXlDQoU0qz54F7sCs9HOBu06lkDV3BJz8oyUhGBpgbDQD3Fw0goOhKH')
 	process = api.convert({
 		"inputformat": "pdf",
 		"outputformat": "png",
 		"input": "upload",
-		"file": open(pdf_name, 'rb')
+		"file": open('poems.pdf', 'rb')
 	})
 	process.wait()
 	# Downloading images to raw_images folder
@@ -27,11 +25,11 @@ def downloadImages():
 
 def createRawImages():
 	# Extracting zip file
-	with zipfile.ZipFile("raw_images/" + zip_file, 'r') as zip_ref:
+	with zipfile.ZipFile("raw_images/poems.zip", 'r') as zip_ref:
 		zip_ref.extractall("raw_images/")
 
 	# Deleting zip file
-	os.remove("raw_images/" + zip_file)
+	os.remove("raw_images/poems.zip")
 	os.remove("poems.pdf")
 
 	# Renaming images
