@@ -56,6 +56,8 @@ import RightIcon from 'vue-material-design-icons/ChevronRightCircle'
 import PlusIcon from 'vue-material-design-icons/PlusCircle'
 import MinusIcon from 'vue-material-design-icons/MinusCircle'
 import Flipbook from './Flipbook'
+import axios from 'axios'
+
 
 export default
   name: 'app'
@@ -86,27 +88,15 @@ export default
       flipbook.flipLeft() if ev.keyCode == 37 and flipbook.canFlipLeft
       flipbook.flipRight() if ev.keyCode == 39 and flipbook.canFlipRight
 
-    # Simulate asynchronous pages initialization
-    setTimeout (=>
-      @pages = [
-        null,
-        'images/1.png'
-        'images/2.png'
-        'images/3.png'
-        'images/4.png'
-        'images/5.png'
-        'images/6.png'
-      ]
-      @pagesHiRes = [
-        null
-        'images/1.png'
-        'images/2.png'
-        'images/3.png'
-        'images/4.png'
-        'images/5.png'
-        'images/6.png'
-      ]
-    ), 1
+    thisCoffee = @
+    starterPage = [null]
+
+    axios.get('http://18.224.110.124:5000/retrieve').then((response) -> 
+      thisCoffee.pages = starterPage.concat(response.data)
+      return
+    ).catch((error) -> console.log(error.message))
+
+    @pagesHiRes = thisCoffee.pages
 
     window.addEventListener 'hashchange', @setPageFromHash
     @setPageFromHash()
