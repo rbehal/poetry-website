@@ -98,6 +98,7 @@ def upload_image():
 	return 'NOT OK'
 
 @app.route("/retrieve", methods = ['GET'])
+@cross_origin()
 def retrieve_images():
 	if request.method == "GET":
 		return retrieveImages()
