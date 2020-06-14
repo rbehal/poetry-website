@@ -29,7 +29,7 @@ def downloadImages():
 	process.download("raw_images/")
 	print("Images downloaded")
 
-def createRawImages():
+def createRawImages(isAddition):
 	images_path = "raw_images/"
 
 	# Extracting zip file
@@ -57,8 +57,12 @@ def createRawImages():
 		else:
 			continue
 	print("Images named appropriately")
-	uploadImages(num_pages)
+	if isAddition:
+		addImages(num_pages)
+	else:
+		uploadImages(num_pages)
 
+# Used for completely changing flipbook content
 def uploadImages(num_pages):
 	# Delete old images -- Cloudinary
 	cloudinary.api.delete_resources_by_prefix("raw_images")
@@ -72,6 +76,32 @@ def uploadImages(num_pages):
 	with open('poems.json', 'w') as f:
 	    json.dump(image_links, f)
 	print("Images uploaded")
+
+	# Delete recently uploaded images -- Local
+	filesToRemove = [os.path.join("raw_images",f) for f in os.listdir("raw_images")]
+	for f in filesToRemove:
+		os.remove(f) 
+
+# Used for just adding pages
+def addImages(num_pages):
+	with open('poems.json', 'r') as f:
+		old_image_links = json.load(f)
+	
+	curr_length = len(old_image_links)
+	new_length = curr_length + 1
+	for i in range(1, num_pages + 1):
+		os.rename("raw_images/" + str(i) + ".png", "raw_images/" + str(new_length) + ".png")
+		new_length += 1
+
+	new_image_links = []
+	for i in range(curr_length + 1, new_length):
+		upload_ref = cloudinary.uploader.upload("raw_images/" + str(i) + ".png", use_filename=True, folder="raw_images")
+		new_image_links.append(upload_ref['secure_url'])
+	print("Images uploaded")
+
+	os.remove("poems.json") # Removing old
+	with open('poems.json', 'w') as f:
+	    json.dump(old_image_links + new_image_links, f)
 
 	# Delete recently uploaded images -- Local
 	filesToRemove = [os.path.join("raw_images",f) for f in os.listdir("raw_images")]
@@ -99,7 +129,18 @@ def upload_image():
 			poems = request.files["poems"]
 			poems.save(os.getcwd() + "/poems.pdf")
 			downloadImages()
-			createRawImages()
+			createRawImages(False)
+			return redirect(request.referrer)
+	return 'NOT OK'
+
+@app.route("/add", methods = ['GET','POST']) 
+def upload_image():
+	if request.method == "POST":
+		if request.files:
+			poems = request.files["poems"]
+			poems.save(os.getcwd() + "/poems.pdf")
+			downloadImages()
+			createRawImages(True)
 			return redirect(request.referrer)
 	return 'NOT OK'
 
