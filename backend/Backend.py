@@ -27,6 +27,7 @@ def downloadImages():
 	process.wait()
 	# Downloading images to raw_images folder
 	process.download("raw_images/")
+	print("Images downloaded")
 
 def createRawImages():
 	images_path = "raw_images/"
@@ -38,6 +39,7 @@ def createRawImages():
 	# Deleting zip file
 	os.remove(images_path + "poems.zip")
 	os.remove("poems.pdf")
+	print("Images extracted")
 
 	# Renaming images
 	num_pages = 0
@@ -54,6 +56,7 @@ def createRawImages():
 				num_pages += 1
 		else:
 			continue
+	print("Images named appropriately")
 	uploadImages(num_pages)
 
 def uploadImages(num_pages):
@@ -67,6 +70,7 @@ def uploadImages(num_pages):
 
 	with open('poems.json', 'w') as f:
 	    json.dump(image_links, f)
+	print("Images uploaded")
 
 def retrieveImages():
 	with open('poems.json', 'r') as f:
