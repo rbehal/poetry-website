@@ -66,11 +66,11 @@ def uploadImages(num_pages):
 		image_links.append(upload_ref['secure_url'])
 
 	with open('poems.json', 'w') as f:
-    	json.dump(image_links, f)
+	    json.dump(image_links, f)
 
 def retrieveImages():
 	with open('poems.json', 'r') as f:
-		image_links = json.load(f)
+	    image_links = json.load(f)
 	return jsonify(image_links)
 
 
