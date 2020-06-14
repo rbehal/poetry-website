@@ -60,7 +60,7 @@ def createRawImages():
 	uploadImages(num_pages)
 
 def uploadImages(num_pages):
-	# Delete old images
+	# Delete old images -- Cloudinary
 	cloudinary.api.delete_resources_by_prefix("raw_images")
 
 	image_links = []
@@ -68,9 +68,15 @@ def uploadImages(num_pages):
 		upload_ref = cloudinary.uploader.upload("raw_images/" + str(i) + ".png", use_filename=True, folder="raw_images")
 		image_links.append(upload_ref['secure_url'])
 
+	os.remove("poems.json") # Removing old
 	with open('poems.json', 'w') as f:
 	    json.dump(image_links, f)
 	print("Images uploaded")
+
+	# Delete recently uploaded images -- Local
+	filesToRemove = [os.path.join("raw_images",f) for f in os.listdir("raw_images")]
+	for f in filesToRemove:
+		os.remove(f) 
 
 def retrieveImages():
 	with open('poems.json', 'r') as f:
