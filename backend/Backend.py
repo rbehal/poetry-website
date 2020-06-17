@@ -83,7 +83,7 @@ def uploadImages(num_pages):
 		os.remove(f) 
 
 # Used for just adding pages
-def addImages(num_pages):
+def addImages(num_pages): # File you add must be less pages than the total number of current pages
 	with open('poems.json', 'r') as f:
 		old_image_links = json.load(f)
 	
@@ -134,7 +134,7 @@ def upload_image():
 	return 'NOT OK'
 
 @app.route("/add", methods = ['GET','POST']) 
-def upload_image():
+def add_image():
 	if request.method == "POST":
 		if request.files:
 			poems = request.files["poems"]

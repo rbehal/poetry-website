@@ -1,0 +1,15 @@
+# From new instance instructions
+sudo apt-get update
+sudo apt install python3-pip
+sudo apt install python3-virtualenv
+git clone https://github.com/rbehal/poetry-website.git
+cd poetry-website/backend
+virtualenv venv
+export CLOUDINARY_URL=cloudinary://475129822997475:9X537BLYcr4jcbRXQ_bwt144npM@dlkqyijad
+source venv/bin/activate
+pip install -r requirements.txt
+nohup gunicorn --bind 0.0.0.0:5000 Backend:app --timeout 600
+
+# Closing nohup process
+ps aux|grep python
+kill [PID]
