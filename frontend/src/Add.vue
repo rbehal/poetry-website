@@ -1,12 +1,13 @@
 <template>
     <div class="row">
         <div class="col" style="text-align: center">
-            <h1>Upload Page</h1>
+            <h1>Add Page</h1>
             <form action="http://18.224.110.124:5000/add" method="POST" enctype="multipart/form-data">
                 <b-form-file 
                     class="py-2" 
                     accept="application/pdf"
                     name="poems"
+                    v-model="file"
                     plain
                 >
                 </b-form-file>
@@ -14,6 +15,7 @@
                     type="submit" 
                     variant="info"
                     class="add-button"
+                    :disabled="!isFile()"
                 >
                     Add Pages
                 </b-button>
@@ -26,7 +28,17 @@
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 export default {
-
+  data: function () {
+    return {
+      file: null
+    }
+  },
+  methods: {
+      isFile: function() {
+          if (this.file == null) return false;
+          return true; 
+      }
+  }
 }
 </script>
 

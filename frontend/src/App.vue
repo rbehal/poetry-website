@@ -79,7 +79,7 @@ export default
     onZoomStart: (zoom) -> console.log 'zoom-start', zoom
     onZoomEnd: (zoom) -> console.log 'zoom-end', zoom
     setPageFromHash: ->
-      n = parseInt window.location.hash.slice(1), 10
+      n = parseInt window.location.hash.slice(2), 10
       @pageNum = n if isFinite n
   mounted: ->
     window.addEventListener 'keydown', (ev) =>

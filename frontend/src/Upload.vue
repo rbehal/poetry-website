@@ -7,6 +7,7 @@
                     class="py-2" 
                     accept="application/pdf"
                     name="poems"
+                    v-model="file"
                     plain
                 >
                 </b-form-file>
@@ -14,6 +15,7 @@
                     type="submit" 
                     variant="info"
                     class="upload-button"
+                    :disabled="!isFile()"
                 >
                     Upload
                 </b-button>
@@ -26,7 +28,17 @@
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 export default {
-
+  data: function () {
+    return {
+      file: null
+    }
+  },
+  methods: {
+      isFile: function() {
+          if (this.file == null) return false;
+          return true; 
+      }
+  }
 }
 </script>
 
