@@ -1,5 +1,5 @@
 module.exports = {
-  publicPath: '',
+  publicPath: '/poetry-website/',
   css: {
     extract: false
   }
