@@ -1,24 +1,5 @@
-# 
+# Poetry Flipbook [Website Link](http://dilse.life/)
 
-## Project setup
-```
-yarn install
-```
+## Motivation
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+My mom is really passionate about poetry and wanted a way to share her work. As a result, I made a simple flipbook using an open source Vue.JS component to display her poetry. There is also functionality on the backend allowing her to add/change the pages on the website. The backend is hosted on a lightweight AWS EC2 instance using Python with Flask for the PDF processeing.
