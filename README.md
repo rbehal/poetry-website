@@ -1,4 +1,4 @@
-# Poetry Flipbook [Website Link](http://dilse.life/)
+# [Poetry Flipbook](http://dilse.life/)
 
 ## Motivation
 
