@@ -90,7 +90,7 @@ export default
 
     thisCoffee = @
     starterPage = [null]
-
+    
     axios.get('http://18.224.110.124:5000/retrieve').then((response) -> 
       thisCoffee.pages = starterPage.concat(response.data)
       return
