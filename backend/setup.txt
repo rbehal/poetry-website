@@ -1,5 +1,5 @@
 # SSH command
-ssh -i poetry-website.pem ubuntu@18.224.110.124
+ssh -i poetry-website_key.pem rbehal@20.102.72.85
 
 # From new instance instructions
 sudo apt-get update

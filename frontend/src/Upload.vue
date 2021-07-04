@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col" style="text-align: center">
             <h1>Upload Page</h1>
-            <form action="http://18.224.110.124:5000/upload" method="POST" enctype="multipart/form-data">
+            <form action="http://20.102.72.85:5000/upload" method="POST" enctype="multipart/form-data">
                 <b-form-file 
                     class="py-2" 
                     accept="application/pdf"
