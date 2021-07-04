@@ -6,7 +6,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --dest docs",
-    "dist": "rollup -c rollup.config.js"
+    "dist": "rollup -c rollup.config.js",
+    "deploy": "sh deploy.sh"
   },
   "dependencies": {
     "@vue/cli": "^4.4.1",
