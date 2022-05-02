@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@vue/cli": "^4.4.1",
-    "axios": "^0.19.2",
+    "axios": "^0.21.2",
     "bootstrap-vue": "^2.15.0",
     "rematrix": "^0.4.1",
     "sass-loader": "^8.0.2",
