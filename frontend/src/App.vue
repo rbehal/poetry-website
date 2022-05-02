@@ -91,7 +91,7 @@ export default
     thisCoffee = @
     starterPage = [null]
     
-    axios.get('http://20.102.72.85:5000/retrieve').then((response) -> 
+    axios.get('http://3.136.112.86:5000/retrieve').then((response) -> 
       thisCoffee.pages = starterPage.concat(response.data)
       return
     ).catch((error) -> console.log(error.message))
