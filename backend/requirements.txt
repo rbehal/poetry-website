@@ -3,4 +3,4 @@ Flask_Cors == 3.0.8
 Flask_RESTful == 0.3.9
 cloudconvert == 2.0.0
 cloudinary == 1.21.1
-requests == 2.23.0
+requests == 2.31.0
