@@ -5,7 +5,7 @@
   },
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --dest docs",
+    "build": "export NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service build --dest docs",
     "dist": "rollup -c rollup.config.js",
     "deploy": "sh deploy.sh"
   },
