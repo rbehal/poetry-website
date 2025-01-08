@@ -18,7 +18,7 @@
       @zoom-start="onZoomStart"
       @zoom-end="onZoomEnd"
     >
-    <router-view></router-view>
+      <router-view></router-view>
 
       <div class="action-bar">
         <left-icon
@@ -90,8 +90,8 @@ export default
 
     thisCoffee = @
     starterPage = [null]
-    
-    axios.get('http://3.136.112.86:5000/retrieve').then((response) -> 
+
+    axios.get('http://18.118.168.240:5000/retrieve').then((response) ->
       thisCoffee.pages = starterPage.concat(response.data)
       return
     ).catch((error) -> console.log(error.message))
@@ -103,13 +103,14 @@ export default
 </script>
 
 <style>
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
 }
 
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   height: 100vh;

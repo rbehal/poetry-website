@@ -1,10 +1,11 @@
 # SSH command
-ssh -i poetry-website_key.pem rbehal@20.102.72.85
+ssh -i poetry-website_key.pem rbehal@18.118.168.240
 
 # From new instance instructions
-sudo apt-get update
-sudo apt install python3-pip
-sudo apt install python3-virtualenv
+sudo yum update
+sudo yum install python3-pip
+sudo yum install python3-virtualenv
+sudo yum install git
 git clone https://github.com/rbehal/poetry-website.git
 cd poetry-website/backend
 virtualenv venv
